@@ -60,11 +60,21 @@ public class AddInventory extends AppCompatActivity {
         foto = foto_aleatoria();
         id = Datos.getId();
         inventory = new Inventory(_code, _description, _quantity, _weight, _size, foto, id);
-        inventory.guardar();
-        subir_fotos(id);
-        limpiar();
-        imp.hideSoftInputFromWindow(code.getWindowToken(), 0);//para qu el teclado se baje
-        Snackbar.make(v, getString(R.string.mensaje_guardado_correcto), Snackbar.LENGTH_LONG).show();
+        inventory.guardar(new ViewSimpleCallback(v) {
+            @Override
+            public void execute(boolean ejecutado) {
+                if(ejecutado){
+                    subir_fotos(Datos.getId());
+                    limpiar();
+                    InputMethodManager imp =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imp.hideSoftInputFromWindow(code.getWindowToken(), 0);//para qu el teclado se baje
+                    Snackbar.make(view, getString(R.string.mensaje_guardado_correcto), Snackbar.LENGTH_LONG).show();
+                }
+                else{
+                    Snackbar.make(view, "The record is stored in the database", Snackbar.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void subir_fotos(String id){

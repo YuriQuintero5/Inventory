@@ -1,7 +1,10 @@
 package com.example.inventory;
 
-import androidx.annotation.NonNull;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,35 +16,21 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class Datos {
-    private static Inventory _inventory;
-    private static String message = "";
+public class Filter {
 
     private static String db = "Inventory";
     private static DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private static StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-    private static ArrayList<Inventory> inventories = new ArrayList();
 
+    public static Inventory filterByCode(ArrayList<Inventory> list, String code) {
+        Inventory result = null;
+        for (Inventory item: list) {
 
-    public static String getId() {
-        return databaseReference.push().getKey();
-    }
-
-    public static void guardar(Inventory p, final SimplaCallback callback) {
-        _inventory = p;
-
-        filterByCodeExist(p.getCode(), new IBasicCallback() {
-            @Override
-            public void onSuccess() {
-                databaseReference.child(db).child(_inventory.getId()).setValue(_inventory);
-                callback.execute(true);
+            if (item.getCode().toLowerCase().equals(code.toLowerCase())) {
+                result = item;
             }
-            @Override
-            public void onError(String err) {
-                callback.execute(false);
-            }
-        });
-        //message = "The record is stored in the database. Code: "+p.getCode()+", Description: "+p.getDescription();
+        }
+        return result;
     }
     public static void filterByCodeExist(String code, final IBasicCallback callback) {
         Query q = databaseReference.child(db).orderByChild("code").equalTo(code).limitToFirst(1);
@@ -59,23 +48,6 @@ public class Datos {
 
             }
         });
-    }
-    public static String GetMensaje(){
-        return message;
-    }
 
-
-    public static ArrayList<Inventory> obtener() {
-        return inventories;
-    }
-
-
-    public static void setInventories(ArrayList<Inventory> inventories) {
-        inventories = inventories;
-    }
-
-    public static void eliminar(Inventory p) {
-       databaseReference.child(db).child(p.getId()).removeValue();
-       storageReference.child(p.getId()).delete();
     }
 }

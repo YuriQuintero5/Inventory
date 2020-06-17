@@ -8,6 +8,8 @@ public class Inventory {
     private String size;
     private int Foto;
     private String id;
+    private boolean _guardado ;
+    private String _message ;
 
 
     public Inventory(String code, String description, String quantity, String weight, String size, int Foto){
@@ -84,8 +86,18 @@ public class Inventory {
         Foto = foto;
     }
 
-    public void guardar(){
-        Datos.guardar(this);
+    public String getMessage(){
+        return _message;
+    }
+
+    public void guardar(final SimplaCallback callback){
+        Datos.guardar(this, new SimplaCallback() {
+            @Override
+            public void execute(boolean ejecutado) {
+                callback.execute(ejecutado);
+            }
+        });
+        //The record is stored in the database
     }
 
     public void eliminar(){

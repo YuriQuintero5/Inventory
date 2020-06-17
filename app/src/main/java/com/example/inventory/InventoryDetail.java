@@ -16,12 +16,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class DetallePersona extends AppCompatActivity {
+public class InventoryDetail extends AppCompatActivity {
     private Inventory p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_persona);
+        setContentView(R.layout.activity_inventory_detail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final ImageView foto;
         TextView code, description, quantity, weight, size;
@@ -72,7 +72,7 @@ public class DetallePersona extends AppCompatActivity {
 
     public void onBackPressed(){
         finish();
-        Intent i = new Intent(DetallePersona.this, MainActivity.class);
+        Intent i = new Intent(InventoryDetail.this, MainActivity.class);
         startActivity(i);
     }
 

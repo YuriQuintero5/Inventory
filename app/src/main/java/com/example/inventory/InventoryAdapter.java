@@ -17,12 +17,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.PersonaViewHolder>{
+public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.PersonaViewHolder>{
     private ArrayList<Inventory> inventories;
     private OnPersonaClickListener clickListener;
 
 
-    public AdaptadorPersona(ArrayList<Inventory> inventories, OnPersonaClickListener clickListener){
+    public InventoryAdapter(ArrayList<Inventory> inventories, OnPersonaClickListener clickListener){
         this.inventories = inventories;
         this.clickListener = clickListener;
     }
@@ -30,7 +30,7 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
     @NonNull
     @Override
     public PersonaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pesona, parent, false);
+       View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
        return new PersonaViewHolder(v);
     }
 

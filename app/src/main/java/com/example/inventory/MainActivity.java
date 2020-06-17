@@ -20,7 +20,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdaptadorPersona.OnPersonaClickListener{
+public class MainActivity extends AppCompatActivity implements InventoryAdapter.OnPersonaClickListener{
 
 
 
@@ -32,21 +32,21 @@ public class MainActivity extends AppCompatActivity implements AdaptadorPersona.
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab;
-        RecyclerView lstPersonas;
+        RecyclerView lstInventory;
         final ArrayList<Inventory> inventories;
         LinearLayoutManager llm;
-        final AdaptadorPersona adapter;
+        final InventoryAdapter adapter;
 
         DatabaseReference databaseReference;
-        String db = "Personas";
-        lstPersonas = findViewById(R.id.lstPersonas);
+        String db = "Inventory";
+        lstInventory = findViewById(R.id.lstInventory);
 
         inventories = new ArrayList<>();
         llm = new LinearLayoutManager(this);
-        adapter = new AdaptadorPersona(inventories, this);
+        adapter = new InventoryAdapter(inventories, this);
         llm.setOrientation(RecyclerView.VERTICAL);
-        lstPersonas.setLayoutManager(llm);
-        lstPersonas.setAdapter(adapter);
+        lstInventory.setLayoutManager(llm);
+        lstInventory.setAdapter(adapter);
         fab = findViewById(R.id.btnAgregar);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements AdaptadorPersona.
         bundle.putString("size", p.getSize());
         bundle.putInt("foto", p.getFoto());
 
-        intent = new Intent(MainActivity.this, DetallePersona.class);
+        intent = new Intent(MainActivity.this, InventoryDetail.class);
         intent.putExtra("datos",bundle);
         startActivity(intent);
         //finish();
