@@ -68,10 +68,11 @@ public class AddInventory extends AppCompatActivity {
                     limpiar();
                     InputMethodManager imp =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imp.hideSoftInputFromWindow(code.getWindowToken(), 0);//para qu el teclado se baje
-                    Snackbar.make(view, getString(R.string.mensaje_guardado_correcto), Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, getString(R.string.saved_successfully), Snackbar.LENGTH_LONG).show();
+                    onBackPressed();
                 }
                 else{
-                    Snackbar.make(view, "The record is stored in the database", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, getString(R.string.saved_failed), Snackbar.LENGTH_LONG).show();
                 }
             }
         });
@@ -79,8 +80,12 @@ public class AddInventory extends AppCompatActivity {
 
     public void subir_fotos(String id){
         StorageReference child = storageReference.child(id);
-        //Uri uri = Uri.parse("android.resourse://"+R.class.getPackage().getName()+"/"+foto);
-        UploadTask uploadTask = child.putFile(uri);
+        if(uri != null) {
+            UploadTask uploadTask = child.putFile(uri);
+        } else {
+            Uri uri = Uri.parse("android.resourse://"+R.class.getPackage().getName()+"/drawable/"+R.drawable.picture);
+            UploadTask uploadTask = child.putFile(uri);
+        }
     }
 
 

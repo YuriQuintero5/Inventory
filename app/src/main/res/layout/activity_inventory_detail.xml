@@ -71,12 +71,12 @@
                android:stretchColumns="*">
 
                <TableRow
-                   android:id="@+id/filaCedula"
+                   android:id="@+id/rowCode"
                    android:layout_width="match_parent"
                    android:layout_height="match_parent">
 
                    <TextView
-                       android:id="@+id/lblTituloCedula"
+                       android:id="@+id/lblTitleCode"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:gravity="center_horizontal"
@@ -85,19 +85,19 @@
                        android:textStyle="bold" />
 
                    <TextView
-                       android:id="@+id/lblCedulaDetalle"
+                       android:id="@+id/lblCode"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:textSize="18sp" />
                </TableRow>
 
                <TableRow
-                   android:id="@+id/filaNombre"
+                   android:id="@+id/rowDescription"
                    android:layout_width="match_parent"
                    android:layout_height="match_parent">
 
                    <TextView
-                       android:id="@+id/lblTituloNombre"
+                       android:id="@+id/lblTitleDescription"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:gravity="center_horizontal"
@@ -106,7 +106,7 @@
                        android:textStyle="bold" />
 
                    <TextView
-                       android:id="@+id/lblNombreDetalle"
+                       android:id="@+id/lblDescription"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:textSize="18sp" />
@@ -118,7 +118,7 @@
                    android:layout_height="match_parent">
 
                    <TextView
-                       android:id="@+id/lblTituloApellido"
+                       android:id="@+id/lblTitleQuantity"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:gravity="center_horizontal"
@@ -127,7 +127,47 @@
                        android:textStyle="bold" />
 
                    <TextView
-                       android:id="@+id/lblApellidoDetalle"
+                       android:id="@+id/lblQuantity"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textSize="18sp" />
+               </TableRow>
+               <TableRow
+                   android:id="@+id/rowWeight"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <TextView
+                       android:id="@+id/lblTitleWeight"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:gravity="center_horizontal"
+                       android:text="@string/add_weight"
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/lblWeight"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textSize="18sp" />
+               </TableRow>
+               <TableRow
+                   android:id="@+id/rowSize"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <TextView
+                       android:id="@+id/lblTitleSize"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:gravity="center_horizontal"
+                       android:text="@string/add_size"
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/lblSize"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:textSize="18sp" />

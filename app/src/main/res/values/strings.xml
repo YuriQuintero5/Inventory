@@ -11,6 +11,11 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_add">ADD INVENTORY</string>
 
+    <string name="delete_inventory">Delete Record</string>
+    <string name="delete_inventory_detail">Are you sure you want to delete this record?</string>
+    <string name="delete_inventory_confirm">Yes</string>
+    <string name="delete_inventory_cancel">No</string>
+
     <string name="add_codigo">Code</string>
     <string name="add_description">Description</string>
     <string name="add_quantity">Quantity</string>
@@ -19,7 +24,8 @@
 
     <string name="add_btn_add">Add</string>
     <string name="add_btn_clear">Clear</string>
-    <string name="mensaje_guardado_correcto">Persona Guardada Correctamente</string>
-    <string name="titulo_detalle">Detalle Persona</string>
-    <string name="etiqueta_boton_eliminar">Eliminar</string>
+    <string name="saved_successfully">Record saved successfully</string>
+    <string name="saved_failed">The record is stored in the database</string>
+    <string name="titulo_detalle">Inventory detail</string>
+    <string name="etiqueta_boton_eliminar">Remove</string>
 </resources>

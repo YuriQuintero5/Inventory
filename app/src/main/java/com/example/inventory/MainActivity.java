@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity implements InventoryAdapter.
        Intent intent;
        intent = new Intent(MainActivity.this, AddInventory.class);
        startActivity(intent);
-       //finish();
-
-
     }
 
     @Override

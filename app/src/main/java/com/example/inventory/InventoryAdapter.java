@@ -81,7 +81,7 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Pers
             super(itemView);
             v = itemView;
             foto = v.findViewById(R.id.imgFoto);
-            code = v.findViewById(R.id.lblCode);
+            code = v.findViewById(R.id.lblTitleCode);
             description = v.findViewById(R.id.lblDescription);
             quantity = v.findViewById(R.id.lblQuantity);
             weight = v.findViewById(R.id.lblWeight);

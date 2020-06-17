@@ -1,5 +1,6 @@
 package com.example.inventory;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -18,13 +20,14 @@ import com.squareup.picasso.Picasso;
 
 public class InventoryDetail extends AppCompatActivity {
     private Inventory p;
+    TextView code, description, quantity, weight, size;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_detail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final ImageView foto;
-        TextView code, description, quantity, weight, size;
         Intent intent;
         Bundle bundle;
         String _code, _description, _quantity, _weight, _size, id;
@@ -32,9 +35,9 @@ public class InventoryDetail extends AppCompatActivity {
         StorageReference storageReference;
 
         foto = findViewById(R.id.imgFotoDetalle);
-        code = findViewById(R.id.lblCode);
+        code = findViewById(R.id.lblTitleCode);
         description = findViewById(R.id.lblDescription);
-        quantity = findViewById(R.id.lblDescription);
+        quantity = findViewById(R.id.lblQuantity);
         weight = findViewById(R.id.lblWeight);
         size = findViewById(R.id.lblSize);
 
@@ -55,6 +58,12 @@ public class InventoryDetail extends AppCompatActivity {
         storageReference.child(id).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(foto);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Uri uri = Uri.parse("android.resourse://"+R.class.getPackage().getName()+"/drawable/"+R.drawable.picture);
                 Picasso.get().load(uri).into(foto);
             }
         });
@@ -80,10 +89,10 @@ public class InventoryDetail extends AppCompatActivity {
     public void eliminar(View v){
         String positivo, negativo;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Eliminar Persona");
-        builder.setMessage("Estas seguro que desea eliminar a esta persona?");
-        positivo = "Si";
-        negativo = "No";
+        builder.setTitle(R.string.delete_inventory);
+        builder.setMessage(R.string.delete_inventory_detail);
+        positivo = getString(R.string.delete_inventory_confirm);
+        negativo = getString(R.string.delete_inventory_cancel);
 
         builder.setPositiveButton(positivo, new DialogInterface.OnClickListener() {
             @Override
