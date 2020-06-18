@@ -22,9 +22,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements InventoryAdapter.OnPersonaClickListener{
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements InventoryAdapter.
         final InventoryAdapter adapter;
 
         DatabaseReference databaseReference;
-        String db = "Inventory";
+        String db = getString(R.string.app_db);
         lstInventory = findViewById(R.id.lstInventory);
 
         inventories = new ArrayList<>();

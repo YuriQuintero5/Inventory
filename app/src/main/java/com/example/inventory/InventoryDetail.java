@@ -35,7 +35,7 @@ public class InventoryDetail extends AppCompatActivity {
         StorageReference storageReference;
 
         foto = findViewById(R.id.imgFotoDetalle);
-        code = findViewById(R.id.lblTitleCode);
+        code = findViewById(R.id.lblCode);
         description = findViewById(R.id.lblDescription);
         quantity = findViewById(R.id.lblQuantity);
         weight = findViewById(R.id.lblWeight);
@@ -75,7 +75,7 @@ public class InventoryDetail extends AppCompatActivity {
         weight.setText(_weight);
         size.setText(_size);
 
-        p = new Inventory(_code, _description, _quantity, _weight, _code, 0, id);
+        p = new Inventory(_code, _description, _quantity, _weight, _code, fot, id);
 
     }
 
