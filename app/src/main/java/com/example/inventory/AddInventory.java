@@ -83,7 +83,8 @@ public class AddInventory extends AppCompatActivity {
         if(uri != null) {
             UploadTask uploadTask = child.putFile(uri);
         } else {
-            Uri uri = Uri.parse("android.resourse://"+R.class.getPackage().getName()+"/drawable/"+R.drawable.picture);
+            //Uri uri = Uri.parse("android.resource://"+R.class.getPackage().getName()+"/drawable/"+R.drawable.picture);
+            Uri uri = Uri.parse("android.resource://"+R.class.getPackage().getName()+"/drawable/picture");
             UploadTask uploadTask = child.putFile(uri);
         }
     }

@@ -59,12 +59,17 @@ public class InventoryDetail extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(foto);
+                foto.setImageURI(null);
+                foto.setImageURI(uri);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Uri uri = Uri.parse("android.resourse://"+R.class.getPackage().getName()+"/drawable/"+R.drawable.picture);
+                /// Uri uri = Uri.parse("android.resource://"+R.class.getPackage().getName()+"/drawable/"+R.drawable.picture);
+                Uri uri = Uri.parse("android.resource://"+R.class.getPackage().getName()+"/drawable/picture");
                 Picasso.get().load(uri).into(foto);
+                foto.setImageURI(null);
+                foto.setImageURI(uri);
             }
         });
 
